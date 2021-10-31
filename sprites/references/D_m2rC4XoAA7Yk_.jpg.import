@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/D_m2rC4XoAA7Yk_.jpg-3076086e1032cb8b4e2f124a1ad25c60.stex"
+path="res://.import/D_m2rC4XoAA7Yk_.jpg-9f72c7d503f25e3e2c5b3c38f821d02b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Team/Gines/D_m2rC4XoAA7Yk_.jpg"
-dest_files=[ "res://.import/D_m2rC4XoAA7Yk_.jpg-3076086e1032cb8b4e2f124a1ad25c60.stex" ]
+source_file="res://sprites/references/D_m2rC4XoAA7Yk_.jpg"
+dest_files=[ "res://.import/D_m2rC4XoAA7Yk_.jpg-9f72c7d503f25e3e2c5b3c38f821d02b.stex" ]
 
 [params]
 

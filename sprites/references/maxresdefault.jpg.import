@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/maxresdefault.jpg-ba2d7386508dfab050c8be0b203b0712.stex"
+path="res://.import/maxresdefault.jpg-b1965b5c984712dc1de620b89605404c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Team/Gines/maxresdefault.jpg"
-dest_files=[ "res://.import/maxresdefault.jpg-ba2d7386508dfab050c8be0b203b0712.stex" ]
+source_file="res://sprites/references/maxresdefault.jpg"
+dest_files=[ "res://.import/maxresdefault.jpg-b1965b5c984712dc1de620b89605404c.stex" ]
 
 [params]
 
