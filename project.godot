@@ -11,7 +11,9 @@ config_version=4
 [application]
 
 config/name="Endless- Runner"
-run/main_scene="res://scenes/title/title.tscn"
+run/main_scene="res://scenes/splash_screen/animated_screen.tscn"
+boot_splash/image="res://resources/640px-A_black_image.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [debug]
@@ -24,6 +26,7 @@ window/size/width=480
 window/size/height=270
 window/size/test_width=960
 window/size/test_height=540
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
