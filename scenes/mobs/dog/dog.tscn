@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/pixel art/dog/dog_concept.png" type="Texture" id=1]
+[ext_resource path="res://scenes/mobs/dog/dog.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 7.09808 )
+
+[node name="dog" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
+collision_mask = 14
+script = ExtResource( 2 )
+speed = 260
+gravity = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7.1091 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
