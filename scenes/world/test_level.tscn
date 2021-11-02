@@ -97,6 +97,6 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="dog" parent="." instance=ExtResource( 1 )]
-position = Vector2( 312, 72 )
+position = Vector2( 184, 120 )
 gravity = 19
 jump_force = 358

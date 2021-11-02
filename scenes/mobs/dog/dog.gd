@@ -25,6 +25,9 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("ui_up") and can_jump:
 		velocity.y = -jump_force
+	
+	if Input.is_action_just_released("ui_up") and (velocity.y < 0):
+		velocity.y = 0
 		
 	velocity.y += gravity
 	
