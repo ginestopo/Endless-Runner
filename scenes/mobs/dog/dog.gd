@@ -43,7 +43,18 @@ func _process(delta):
 			can_jump = true
 				
 	
+	_update_animation();
+	
 	
 func _mirror_sprite():
 	if(velocity.x != 0):
 		$Sprite.flip_h = velocity.x < 0
+
+# very temporary, need actual animation controller
+func _update_animation():
+	var next_anim = "idle";
+	if( velocity.x != 0 ):
+		next_anim = "run";
+	
+	if( next_anim != $AnimationPlayer.current_animation ):
+		$AnimationPlayer.play( next_anim );
