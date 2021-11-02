@@ -56,5 +56,8 @@ func _update_animation():
 	if( velocity.x != 0 ):
 		next_anim = "run";
 	
+	if( !can_jump ):
+		next_anim = "jump";
+	
 	if( next_anim != $AnimationPlayer.current_animation ):
 		$AnimationPlayer.play( next_anim );
