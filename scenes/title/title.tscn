@@ -6,7 +6,7 @@
 resource_name = "fade_in"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("fade_in:modulate")
+tracks/0/path = NodePath("FadeIn:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("fade_in:visible")
+tracks/1/path = NodePath("FadeIn:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 resource_name = "fade_out"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("fade_in:modulate")
+tracks/0/path = NodePath("FadeIn:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("fade_in:visible")
+tracks/1/path = NodePath("FadeIn:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -76,31 +76,31 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 margin_top = 116.0
 margin_right = 480.0
 margin_bottom = 130.0
 text = "Endless Runner"
 align = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 margin_top = 134.0
 margin_right = 480.0
 margin_bottom = 154.0
 text = "Start"
 
-[node name="fade_in" type="ColorRect" parent="."]
-margin_left = -44.717
-margin_top = -73.4162
-margin_right = 546.283
-margin_bottom = 517.584
+[node name="FadeIn" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="fader_controller" type="AnimationPlayer" parent="."]
+[node name="FadeController" type="AnimationPlayer" parent="."]
 anims/fade_in = SubResource( 1 )
 anims/fade_out = SubResource( 2 )
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
