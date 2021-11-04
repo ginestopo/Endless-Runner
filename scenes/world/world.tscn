@@ -1,23 +1,30 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
 [ext_resource path="res://scenes/world/platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground2.png" type="Texture" id=4]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground2.png" type="Texture" id=5]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground1.png" type="Texture" id=6]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground1.png" type="Texture" id=7]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background1.png" type="Texture" id=8]
 [ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds.png" type="Texture" id=9]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background2.png" type="Texture" id=10]
-[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds2.png" type="Texture" id=11]
-[ext_resource path="res://scenes/world/ParallaxBackground.gd" type="Script" id=12]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 240, 10 )
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+
+uniform float speed;
+
+
+void fragment () {
+	COLOR = texture(TEXTURE, vec2(UV.x + TIME * speed, UV.y));
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/speed = 0.1
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 300 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 240, 10 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,17 +33,13 @@ __meta__ = {
 }
 velocity = 86
 
-[node name="DeathBarrier" type="Area2D" parent="."]
-position = Vector2( 240, 280 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Background" type="Node2D" parent="."]
+scale = Vector2( 0.469, 0.469 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Clouds" type="Sprite" parent="Background"]
+material = SubResource( 4 )
+texture = ExtResource( 9 )
+centered = false
 
 [node name="Borders" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -57,101 +60,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource( 12 )
+[node name="DeathBarrier" type="Area2D" parent="."]
+position = Vector2( 240, 280 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="clouds1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_scale = Vector2( 0.2, 1 )
-motion_mirroring = Vector2( 896, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds1"]
-position = Vector2( 224, 40 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 9 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/clouds1"]
-position = Vector2( 672, 40 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 11 )
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_scale = Vector2( 0.2, 1 )
-motion_mirroring = Vector2( 896, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
-position = Vector2( 224, 14 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 8 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
-position = Vector2( 673, 14 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 10 )
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_scale = Vector2( 0.5, 1 )
-motion_mirroring = Vector2( 900.52, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2( 224, -23 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 7 )
-flip_h = true
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2( 674, -23 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 5 )
-flip_h = true
-
-[node name="clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_scale = Vector2( 0.6, 1 )
-motion_mirroring = Vector2( 901.105, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds2"]
-self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 224, 40 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 11 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/clouds2"]
-self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 674.4, 40 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 9 )
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_scale = Vector2( 0.8, 1 )
-motion_mirroring = Vector2( 982, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 240, 64 )
-scale = Vector2( 0.479997, 0.479997 )
-texture = ExtResource( 6 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 731, 64 )
-scale = Vector2( 0.479997, 0.479997 )
-texture = ExtResource( 4 )
-
-[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, 104 )
-motion_mirroring = Vector2( 900, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2( 224, 66 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 7 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2( 674, 66 )
-scale = Vector2( 0.439997, 0.439997 )
-texture = ExtResource( 5 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Dog" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 56 )
