@@ -17,7 +17,10 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	
 	if not $RayCast2D.is_colliding():
-		$AnimationPlayer.play("jump")
+		if( velocity.y < 0 ):
+			$AnimationPlayer.play("jump")
+		else:
+			$AnimationPlayer.play("fall")
 	elif input == 0:
 		$AnimationPlayer.play("walk")
 	else:
