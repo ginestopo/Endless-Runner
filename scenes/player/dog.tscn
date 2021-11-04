@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/pixel art/dog/dog_spritesheet_2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/dog.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 3.66667
 height = 3.33333
 
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "jump"
 length = 0.1
 loop = true
@@ -82,7 +82,7 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -4 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -93,7 +93,7 @@ frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
-anims/jump = SubResource( 7 )
+anims/jump = SubResource( 3 )
 anims/run = SubResource( 4 )
 anims/walk = SubResource( 5 )
 

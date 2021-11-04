@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
 [ext_resource path="res://scenes/world/platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground2.png" type="Texture" id=4]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground2.png" type="Texture" id=5]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground1.png" type="Texture" id=6]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground1.png" type="Texture" id=7]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background1.png" type="Texture" id=8]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds.png" type="Texture" id=9]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background2.png" type="Texture" id=10]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/world/ParallaxBackground.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
@@ -16,8 +25,88 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 240, 135 )
+current = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 12 )
+
+[node name="clouds1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds1"]
+position = Vector2( 224, 40 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( 224, 32 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 224, 0 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 10 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 224, -64 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 224, -32 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 240, 64 )
+scale = Vector2( 0.479997, 0.479997 )
+texture = ExtResource( 6 )
+
+[node name="clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds2"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 224, 40 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 11 )
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 104 )
+motion_mirroring = Vector2( 450.281, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2( 224, 104 )
+scale = Vector2( 0.439997, 0.439997 )
+texture = ExtResource( 4 )
+
 [node name="Dog" parent="." instance=ExtResource( 1 )]
-position = Vector2( 93, 89 )
+position = Vector2( 40, 64 )
 
 [node name="Borders" type="StaticBody2D" parent="."]
 __meta__ = {
