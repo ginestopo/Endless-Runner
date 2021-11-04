@@ -24,16 +24,49 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+velocity = 86
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 240, 135 )
 current = true
+
+[node name="Borders" type="StaticBody2D" parent="Camera2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Left" type="CollisionShape2D" parent="Camera2D/Borders"]
+position = Vector2( -10, 135 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Right" type="CollisionShape2D" parent="Camera2D/Borders"]
+position = Vector2( 490, 135 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DeathBarrier" type="Area2D" parent="Camera2D"]
+position = Vector2( 240, 280 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/DeathBarrier"]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 12 )
 
 [node name="clouds1" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.2, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds1"]
@@ -43,6 +76,7 @@ texture = ExtResource( 9 )
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.2, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
@@ -52,6 +86,7 @@ texture = ExtResource( 8 )
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.4, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
@@ -61,6 +96,7 @@ texture = ExtResource( 10 )
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
@@ -70,6 +106,7 @@ texture = ExtResource( 7 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.6, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
@@ -79,6 +116,7 @@ texture = ExtResource( 5 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.8, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
@@ -88,6 +126,7 @@ texture = ExtResource( 6 )
 
 [node name="clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, 104 )
+motion_scale = Vector2( 0.6, 1 )
 motion_mirroring = Vector2( 450.281, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds2"]
@@ -106,38 +145,8 @@ scale = Vector2( 0.439997, 0.439997 )
 texture = ExtResource( 4 )
 
 [node name="Dog" parent="." instance=ExtResource( 1 )]
-position = Vector2( 40, 64 )
-
-[node name="Borders" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Left" type="CollisionShape2D" parent="Borders"]
-position = Vector2( -10, 135 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Right" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 490, 135 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="DeathBarrier" type="Area2D" parent="."]
-position = Vector2( 240, 280 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 128, 56 )
+_speed = 334
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -179,6 +188,6 @@ __meta__ = {
 wait_time = 2.0
 autostart = true
 
-[connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]
+[connection signal="body_entered" from="Camera2D/DeathBarrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="pressed" from="UI/Restart" to="." method="_on_restart_pressed"]
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
