@@ -12,7 +12,7 @@ export (int) var velocity
 func _process(_delta: float) -> void:
 # warning-ignore:integer_division
 	$UI/Score.text = str((OS.get_ticks_msec() - _start_time) / 1_000)
-	$Camera2D.position.x += velocity*_delta
+
 
 
 func _on_restart_pressed() -> void:
@@ -33,6 +33,6 @@ func _on_platform_timer_timeout() -> void:
 	rng.randomize()
 	#random x size for each block 
 	p.scale.x = rng.randf_range(0.5,1.0)
-	p.position.x = $Camera2D.position.x + 960
+	p.position.x = 720
 	p.position.y = randi() % 135 + 68
 
