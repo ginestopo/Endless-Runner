@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds.png" type="Texture" id=17]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background1.png" type="Texture" id=18]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground1.png" type="Texture" id=19]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground1.png" type="Texture" id=20]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Foreground2.png" type="Texture" id=21]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Midground2.png" type="Texture" id=22]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/Clouds2.png" type="Texture" id=23]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/Parallax Images/background2.png" type="Texture" id=24]
+
+[node name="ParallaxBG" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="BackgroundColor" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxBackground/BackgroundColor"]
+margin_right = 256.0
+margin_bottom = 272.0
+color = Color( 0.690196, 0.690196, 0.623529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloudsLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/CloudsLayer"]
+position = Vector2( 128, 128 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 17 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/CloudsLayer"]
+position = Vector2( 384, 128 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 23 )
+
+[node name="BackgroundLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/BackgroundLayer"]
+position = Vector2( 128, 128 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 18 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/BackgroundLayer"]
+position = Vector2( 384, 128 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 24 )
+
+[node name="MidLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/MidLayer"]
+position = Vector2( 128, 129 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 19 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/MidLayer"]
+position = Vector2( 384, 129 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 22 )
+
+[node name="FrontLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/FrontLayer"]
+position = Vector2( 128, 144 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 20 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/FrontLayer"]
+position = Vector2( 384, 144 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 21 )
