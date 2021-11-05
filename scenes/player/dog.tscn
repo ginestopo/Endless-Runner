@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/player/dog.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.66667
+radius = 3.33333
 height = 3.33333
 
 [sub_resource type="Animation" id=2]
