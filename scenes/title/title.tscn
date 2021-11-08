@@ -52,12 +52,12 @@ shader_param/speed = 0.05
 shader = SubResource( 3 )
 shader_param/speed = 0.2
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=10]
 extra_spacing_char = 7
 extra_spacing_space = 10
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeIn:modulate")
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeIn:modulate")
@@ -176,22 +176,22 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 66.0
+margin_top = 107.0
 margin_right = 480.0
-margin_bottom = 129.0
-custom_fonts/font = SubResource( 12 )
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 10 )
 text = "Endless Runner"
 align = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
-margin_left = 192.0
-margin_top = 99.0
-margin_right = 32.0
-margin_bottom = 32.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 224.0
+margin_top = 131.0
+margin_right = 256.0
+margin_bottom = 163.0
+size_flags_horizontal = 4
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="FadeIn" type="ColorRect" parent="."]
 visible = false
@@ -204,7 +204,7 @@ __meta__ = {
 }
 
 [node name="FadeController" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 10 )
-anims/fade_out = SubResource( 11 )
+anims/fade_in = SubResource( 11 )
+anims/fade_out = SubResource( 12 )
 
 [connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
