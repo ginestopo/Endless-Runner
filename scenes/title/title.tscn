@@ -1,9 +1,63 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/title/title.gd" type="Script" id=1]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/CloudsLayer.png" type="Texture" id=2]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/foregroundLayer.png" type="Texture" id=3]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/midgroundLayer.png" type="Texture" id=4]
+[ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/backgroundLayer.png" type="Texture" id=5]
+[ext_resource path="res://resources/fonts/PixeloidSans.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://resources/pixel art/UI/play_button1.png" type="Texture" id=7]
+[ext_resource path="res://resources/pixel art/UI/play_button2.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_in"
+[sub_resource type="Gradient" id=1]
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 256
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+
+uniform float speed;
+
+
+
+void fragment () {
+	COLOR = texture(TEXTURE, vec2(UV.x + TIME * speed, UV.y));
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/speed = 0.01
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 3 )
+shader_param/speed = 0.02
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 3 )
+shader_param/speed = 0.03
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 3 )
+shader_param/speed = 0.1
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 3 )
+shader_param/speed = 0.05
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 3 )
+shader_param/speed = 0.2
+
+[sub_resource type="DynamicFont" id=12]
+extra_spacing_char = 7
+extra_spacing_space = 10
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=10]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeIn:modulate")
@@ -30,8 +84,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=11]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeIn:modulate")
@@ -68,6 +121,52 @@ __meta__ = {
 }
 _start = "res://scenes/world/world.tscn"
 
+[node name="Background" type="Node2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="Background"]
+modulate = Color( 0.713726, 0.713726, 0.666667, 1 )
+position = Vector2( 1668.8, 391.769 )
+rotation = -1.5708
+scale = Vector2( 3.09461, 1741.07 )
+texture = SubResource( 2 )
+
+[node name="BackClouds" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0.564706 )
+material = SubResource( 4 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BackLayer" type="Sprite" parent="Background"]
+material = SubResource( 5 )
+position = Vector2( 0, -130 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="FrontLayer2" type="Sprite" parent="Background"]
+material = SubResource( 6 )
+position = Vector2( 0, -193.333 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="MidClouds" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0.141176 )
+material = SubResource( 7 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="MidLayer" type="Sprite" parent="Background"]
+material = SubResource( 8 )
+position = Vector2( 0, -3.33332 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="FrontLayer" type="Sprite" parent="Background"]
+material = SubResource( 9 )
+position = Vector2( 0, -33.3333 )
+texture = ExtResource( 3 )
+centered = false
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,19 +176,25 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 116.0
+margin_top = 66.0
 margin_right = 480.0
-margin_bottom = 130.0
+margin_bottom = 129.0
+custom_fonts/font = SubResource( 12 )
 text = "Endless Runner"
 align = 1
 
-[node name="Start" type="Button" parent="VBoxContainer"]
-margin_top = 134.0
-margin_right = 480.0
-margin_bottom = 154.0
-text = "Start"
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+margin_left = 192.0
+margin_top = 99.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 3, 3 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+stretch_mode = 4
 
 [node name="FadeIn" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -99,7 +204,7 @@ __meta__ = {
 }
 
 [node name="FadeController" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 1 )
-anims/fade_out = SubResource( 2 )
+anims/fade_in = SubResource( 10 )
+anims/fade_out = SubResource( 11 )
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
