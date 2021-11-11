@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/backgroundLayer.png" type="Texture" id=6]
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/foregroundLayer.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gun/Gun.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/enemy/enemy_1.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Gradient" id=1]
 
@@ -141,6 +142,9 @@ shape = SubResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="enemy_1" parent="." instance=ExtResource( 9 )]
+position = Vector2( 409.474, 42.2074 )
 
 [node name="Dog" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 56 )
