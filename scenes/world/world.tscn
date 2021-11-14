@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/foregroundLayer.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gun/Gun.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/enemy/enemy_1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/world/Camera2D.gd" type="Script" id=10]
 
 [sub_resource type="Gradient" id=1]
 
@@ -65,6 +66,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 velocity = 86
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2( 240, 132 )
+current = true
+script = ExtResource( 10 )
+shake_amount = 3
+shake_duration = 10
 
 [node name="Background" type="Node2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
@@ -197,5 +206,6 @@ wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]
+[connection signal="shot" from="Dog/Gun" to="Camera2D" method="_on_Gun_shot"]
 [connection signal="pressed" from="UI/Restart" to="." method="_on_restart_pressed"]
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
