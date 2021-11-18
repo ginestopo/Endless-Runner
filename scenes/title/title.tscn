@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/title/title.gd" type="Script" id=1]
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/CloudsLayer.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/fonts/PixeloidSans.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://resources/pixel art/UI/play_button1.png" type="Texture" id=7]
 [ext_resource path="res://resources/pixel art/UI/play_button2.png" type="Texture" id=8]
+[ext_resource path="res://scenes/title/FadeIn.gd" type="Script" id=9]
 
 [sub_resource type="Gradient" id=1]
 
@@ -70,6 +71,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeIn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -182,12 +195,11 @@ texture_pressed = ExtResource( 8 )
 stretch_mode = 5
 
 [node name="FadeIn" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+script = ExtResource( 9 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

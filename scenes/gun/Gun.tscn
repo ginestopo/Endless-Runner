@@ -31,5 +31,6 @@ texture = ExtResource( 2 )
 position = Vector2( 17, 1 )
 script = ExtResource( 5 )
 bulletScene = ExtResource( 6 )
+cadence_set = 0.129
 
 [connection signal="shot" from="GunBase/Gear/Gun/shootSpawner" to="." method="_on_shootSpawner_shot"]
