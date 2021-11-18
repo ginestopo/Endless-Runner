@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var speed = 1000;
 var direction = Vector2.ZERO;
+export (PackedScene) var hitParticles;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,21 @@ func _ready():
 func _physics_process(_delta):
 	var collisionDetection = move_and_collide(direction*speed*_delta);
 	if collisionDetection != null:
-		queue_free()
-#	pass
+		if collisionDetection.get_collider().is_in_group("enemy"):
+			var col = collisionDetection.get_collider()
+			col.onHit()
+			particleCreate(-direction)
+			queue_free()
+		elif collisionDetection.get_collider().is_in_group("player"):
+			pass
+		else:
+			var col = collisionDetection.get_collider()
+			particleCreate(-direction)
+			queue_free()
+
+func particleCreate(normalOfHit: Vector2) -> void:
+	var particle = hitParticles.instance() as CPUParticles2D
+	get_tree().get_root().add_child(particle)
+	particle.global_position = self.global_position
+	particle.rotation = normalOfHit.angle()
+	particle.emitting = true

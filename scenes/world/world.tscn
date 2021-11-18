@@ -8,7 +8,6 @@
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/backgroundLayer.png" type="Texture" id=6]
 [ext_resource path="res://resources/pixel art/ParallaxBackground/ParallaxLayers/foregroundLayer.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gun/Gun.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/enemy/enemy_1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/world/Camera2D.gd" type="Script" id=10]
 
 [sub_resource type="Gradient" id=1]
@@ -60,6 +59,9 @@ extents = Vector2( 10, 300 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 240, 10 )
 
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 10, 500 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -71,6 +73,7 @@ velocity = 86
 visible = false
 position = Vector2( 240, 132 )
 current = true
+drag_margin_v_enabled = true
 script = ExtResource( 10 )
 shake_amount = 3
 shake_duration = 10
@@ -152,8 +155,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="enemy_1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 409.474, 42.2074 )
+[node name="FreeEnemies" type="Area2D" parent="."]
+position = Vector2( -80, 280 )
+
+[node name="freeEnemiesBoundary" type="CollisionShape2D" parent="FreeEnemies"]
+shape = SubResource( 12 )
 
 [node name="Dog" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 56 )
@@ -206,6 +212,7 @@ wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]
+[connection signal="body_entered" from="FreeEnemies" to="." method="_on_FreeEnemies_body_entered"]
 [connection signal="shot" from="Dog/Gun" to="Camera2D" method="_on_Gun_shot"]
 [connection signal="pressed" from="UI/Restart" to="." method="_on_restart_pressed"]
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]

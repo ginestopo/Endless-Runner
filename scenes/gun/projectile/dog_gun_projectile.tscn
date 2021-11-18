@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/pixel art/gun/bullet.png.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gun/projectile/projectile.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gun/projectile/hitParticles/projectileHit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 4.93253, 5.79725 )
 
 [node name="dogGunProjectile" type="KinematicBody2D"]
 script = ExtResource( 2 )
+hitParticles = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2.01, 2.01 )

@@ -28,7 +28,6 @@ func _on_death_barrier_body_entered(body: Node) -> void:
 
 func _on_platform_timer_timeout() -> void:
 	var p := _Platform.instance()
-	
 	$Platforms.add_child(p)
 	rng.randomize()
 	#random x size for each block 
@@ -36,3 +35,9 @@ func _on_platform_timer_timeout() -> void:
 	p.position.x = 720
 	p.position.y = randi() % 135 + 68
 
+
+
+func _on_FreeEnemies_body_entered(body: Node) -> void:
+	if body.name == "enemy_tarantula":
+			body.queue_free()
+	pass # Replace with function body.
