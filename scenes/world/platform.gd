@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 
 export(int, -1000, 0) var speed := 200

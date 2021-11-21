@@ -18,6 +18,9 @@ signal shot
 		
 func _process(delta):
 	if Input.is_action_pressed("shoot") and (cadence > cadence_set):
+		var rng = RandomNumberGenerator.new()
+		$shootAudioStream.play()
+		
 		var bullet = bulletScene.instance() as Node2D
 		get_tree().get_root().add_child(bullet)
 		bullet.global_position = self.global_position

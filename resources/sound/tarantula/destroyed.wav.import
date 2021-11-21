@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/destroyed.wav-58c7a3618c5a265863a9f3702d10cb09.sample"
+
+[deps]
+
+source_file="res://resources/sound/tarantula/destroyed.wav"
+dest_files=[ "res://.import/destroyed.wav-58c7a3618c5a265863a9f3702d10cb09.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

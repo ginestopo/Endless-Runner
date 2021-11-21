@@ -21,6 +21,7 @@ func _on_restart_pressed() -> void:
 
 func _on_death_barrier_body_entered(body: Node) -> void:
 	if body.name == "Dog":
+		$failedStreamPlayer.play()
 		body.queue_free()
 		$UI/Restart.show()
 		set_process(false)
@@ -31,7 +32,9 @@ func _on_platform_timer_timeout() -> void:
 	$Platforms.add_child(p)
 	rng.randomize()
 	#random x size for each block 
-	p.scale.x = rng.randf_range(0.5,1.0)
+	var randomScale = rng.randf_range(0.5,1.0)
+	var children = p.get_child(0) as Node2D
+	children.set_scale(Vector2(randomScale,1))
 	p.position.x = 720
 	p.position.y = randi() % 135 + 68
 

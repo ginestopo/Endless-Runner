@@ -6,6 +6,7 @@ export (PackedScene) var hitParticles;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$killBullet.start()
 	pass
 
 
@@ -31,3 +32,8 @@ func particleCreate(normalOfHit: Vector2) -> void:
 	particle.global_position = self.global_position
 	particle.rotation = normalOfHit.angle()
 	particle.emitting = true
+
+
+func killBullet(): #Called when timer runs out, so bullets won't travel infinitely
+	queue_free()
+

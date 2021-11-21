@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/sound/sfx/hit-03.wav" type="AudioStream" id=1]
 
 [sub_resource type="Curve" id=1]
 max_value = 10.0
@@ -21,3 +23,8 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 200.0
 scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
+
+[node name="onHitAudioStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 3.0
+autoplay = true

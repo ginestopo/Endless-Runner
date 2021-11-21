@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shoot-03.wav-31f85615ce89506dc7e0b2302d2ab450.sample"
+
+[deps]
+
+source_file="res://resources/sound/dog/shoot-03.wav"
+dest_files=[ "res://.import/shoot-03.wav-31f85615ce89506dc7e0b2302d2ab450.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

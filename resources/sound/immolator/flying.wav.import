@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flying.wav-0557042b803ddb3fbe80a1a6b4b66578.sample"
+
+[deps]
+
+source_file="res://resources/sound/immolator/flying.wav"
+dest_files=[ "res://.import/flying.wav-0557042b803ddb3fbe80a1a6b4b66578.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

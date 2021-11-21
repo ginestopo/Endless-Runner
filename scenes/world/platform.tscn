@@ -6,25 +6,27 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120, 10 )
 
-[node name="Platform" type="StaticBody2D"]
+[node name="PlatformRoot" type="Node2D"]
 script = ExtResource( 1 )
 spiderEnemy = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2( 0, 10 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D"]
 margin_left = -120.0
+margin_top = -10.0
 margin_right = 120.0
-margin_bottom = 20.0
+margin_bottom = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10 )
-shape = SubResource( 1 )
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0, 10 )
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Platform/CollisionShape2D"]
 rect = Rect2( -120, -10, 240, 20 )
 
-[connection signal="tree_entered" from="." to="." method="_on_Platform_tree_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_visibility_notifier_2d_screen_exited"]
+[connection signal="tree_entered" from="Platform" to="Platform" method="_on_Platform_tree_entered"]
+[connection signal="screen_exited" from="Platform/CollisionShape2D/VisibilityNotifier2D" to="Platform" method="_on_visibility_notifier_2d_screen_exited"]
