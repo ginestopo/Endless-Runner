@@ -31,10 +31,6 @@ func _on_platform_timer_timeout() -> void:
 	var p := _Platform.instance()
 	$Platforms.add_child(p)
 	rng.randomize()
-	#random x size for each block 
-	var randomScale = rng.randf_range(0.5,1.0)
-	var children = p.get_child(0) as Node2D
-	children.set_scale(Vector2(randomScale,1))
 	p.position.x = 720
 	p.position.y = randi() % 135 + 68
 

@@ -1,16 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/world/platform.gd" type="Script" id=1]
 [ext_resource path="res://scenes/enemy/enemy_1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/pixel art/block_tile/block_tile.png.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 120, 10 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "rock_tile"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -21,14 +18,14 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 3 )
+0/shape = SubResource( 2 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -36,32 +33,16 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 [node name="PlatformRoot" type="Node2D"]
 script = ExtResource( 1 )
 spiderEnemy = ExtResource( 2 )
-upper_limit = 10
+upper_limit = 22
 lower_limit = 5
 
-[node name="Platform" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2( 0, 10 )
-shape = SubResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D"]
-margin_left = -120.0
-margin_top = -10.0
-margin_right = 120.0
-margin_bottom = 10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Platform/CollisionShape2D"]
-rect = Rect2( -120, -10, 240, 20 )
-
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 show_collision = true
 format = 1
 
-[connection signal="tree_entered" from="Platform" to="Platform" method="_on_Platform_tree_entered"]
-[connection signal="screen_exited" from="Platform/CollisionShape2D/VisibilityNotifier2D" to="Platform" method="_on_visibility_notifier_2d_screen_exited"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="TileMap"]
+position = Vector2( 128, 8 )
+
+[connection signal="screen_exited" from="TileMap/VisibilityNotifier2D" to="." method="_on_tile_screen_exited"]
