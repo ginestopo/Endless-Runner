@@ -90,9 +90,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10 ]
 }
 
-[node name="Dog" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="Dog" type="KinematicBody2D" groups=["player"]]
 scale = Vector2( 3, 3 )
 collision_mask = 14
 script = ExtResource( 2 )

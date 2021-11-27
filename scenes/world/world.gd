@@ -40,3 +40,4 @@ func _on_FreeEnemies_body_entered(body: Node) -> void:
 	if body.name == "enemy_tarantula":
 			body.queue_free()
 	pass # Replace with function body.
+

@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/pixel art/enemy/enemy_3_sheet.png" type="Texture" id=1]
+[ext_resource path="res://resources/sound/tarantula/destroyed.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/sound/sfx/explosion-01.wav" type="AudioStream" id=3]
+[ext_resource path="res://resources/sound/immolator/flying.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/enemy/enemy_immolator.gd" type="Script" id=5]
+[ext_resource path="res://scenes/vfx/enemyDestroyedParticles.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("enemy_immolator/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,13 +27,56 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.41327, 3.99426 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 139.374
+
 [node name="enemy_3" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="enemy_immolator" type="KinematicBody2D" parent="." groups=["enemy"]]
+script = ExtResource( 5 )
+deathParticles = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="enemy_immolator"]
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemy_immolator"]
+root_node = NodePath("../..")
 autoplay = "idle"
+reset_on_save = false
+anims/RESET = SubResource( 3 )
 anims/idle = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_immolator"]
+position = Vector2( -0.634632, -3.04545 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="enemy_immolator"]
+
+[node name="destroyedAudioStream" type="AudioStreamPlayer2D" parent="enemy_immolator"]
+stream = ExtResource( 3 )
+volume_db = -6.0
+pitch_scale = 2.1
+
+[node name="onHitAudioStream" type="AudioStreamPlayer2D" parent="enemy_immolator"]
+stream = ExtResource( 2 )
+volume_db = -12.0
+pitch_scale = 0.32
+
+[node name="hoveringAudioStream" type="AudioStreamPlayer2D" parent="enemy_immolator"]
+stream = ExtResource( 4 )
+volume_db = -16.0
+pitch_scale = 1.19
+autoplay = true
+
+[node name="Area2D" type="Area2D" parent="enemy_immolator"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_immolator/Area2D"]
+shape = SubResource( 4 )
+
+[connection signal="timeout" from="enemy_immolator/Timer" to="enemy_immolator" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="enemy_immolator/Area2D" to="enemy_immolator" method="_on_Area2D_body_entered"]
