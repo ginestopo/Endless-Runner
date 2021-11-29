@@ -7,11 +7,10 @@
 [ext_resource path="res://scenes/enemy/enemy_immolator.gd" type="Script" id=5]
 [ext_resource path="res://scenes/vfx/enemyDestroyedParticles.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 length = 0.001
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -27,19 +26,26 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.41327, 3.99426 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 139.374
 
 [node name="enemy_3" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -20.1652, 24.0 ],
+"_edit_vertical_guides_": [ 1.16994, -24.0 ]
+}
 
-[node name="enemy_immolator" type="KinematicBody2D" parent="." groups=["enemy"]]
+[node name="enemy_immolator" type="KinematicBody2D" parent="." groups=[
+"enemy",
+]]
 script = ExtResource( 5 )
 deathParticles = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="enemy_immolator"]
+scale = Vector2( 2.6, 2.6 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 4
@@ -47,13 +53,13 @@ vframes = 4
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemy_immolator"]
 root_node = NodePath("../..")
 autoplay = "idle"
-reset_on_save = false
-anims/RESET = SubResource( 3 )
-anims/idle = SubResource( 1 )
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_immolator"]
 position = Vector2( -0.634632, -3.04545 )
-shape = SubResource( 2 )
+scale = Vector2( 2.72, 2.72 )
+shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="enemy_immolator"]
 

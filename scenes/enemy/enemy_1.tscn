@@ -6,7 +6,7 @@
 [ext_resource path="res://resources/sound/sfx/explosion-01.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/vfx/enemyDestroyedParticles.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -21,8 +21,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -38,12 +37,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7, 19.9556 )
 
 [node name="enemy_1" type="Node2D"]
 
-[node name="enemy_tarantula" type="KinematicBody2D" parent="." groups=["enemy"]]
+[node name="enemy_tarantula" type="KinematicBody2D" parent="." groups=[
+"enemy",
+]]
 position = Vector2( 0, -7.85833 )
 script = ExtResource( 2 )
 deathParticles = ExtResource( 5 )
@@ -57,12 +58,12 @@ vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemy_tarantula"]
 autoplay = "idle"
-anims/RESET = SubResource( 3 )
-anims/idle = SubResource( 1 )
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_tarantula"]
 position = Vector2( 0, -12.1395 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="enemy_tarantula"]
 enabled = true
