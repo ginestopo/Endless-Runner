@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/story/story.gd" type="Script" id=1]
 [ext_resource path="res://resources/pixel art/story_frames/5.jpeg" type="Texture" id=2]
@@ -7,32 +7,107 @@
 [ext_resource path="res://resources/pixel art/story_frames/4.jpeg" type="Texture" id=5]
 [ext_resource path="res://resources/pixel art/story_frames/1.jpeg" type="Texture" id=6]
 
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fadein"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fadeout"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="story" type="Node2D"]
 script = ExtResource( 1 )
+_next_scene = "res://scenes/title/title.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 272.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="frames" type="Node2D" parent="."]
 
 [node name="5" type="Sprite" parent="frames"]
-position = Vector2( 240, 136 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 240.019, 136 )
+scale = Vector2( 0.237136, 0.218568 )
 texture = ExtResource( 2 )
 
 [node name="4" type="Sprite" parent="frames"]
-position = Vector2( 240, 136 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 240.019, 136 )
+scale = Vector2( 0.237136, 0.218568 )
 texture = ExtResource( 5 )
 
 [node name="3" type="Sprite" parent="frames"]
-position = Vector2( 240, 136 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 240.019, 136 )
+scale = Vector2( 0.237136, 0.218568 )
 texture = ExtResource( 4 )
 
 [node name="2" type="Sprite" parent="frames"]
-position = Vector2( 240, 136 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 240.019, 136 )
+scale = Vector2( 0.237136, 0.218568 )
 texture = ExtResource( 3 )
 
 [node name="1" type="Sprite" parent="frames"]
-position = Vector2( 240, 136 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 240.119, 136 )
+scale = Vector2( 0.237037, 0.236062 )
 texture = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="fade" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 272.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/fadein = SubResource( 2 )
+anims/fadeout = SubResource( 3 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

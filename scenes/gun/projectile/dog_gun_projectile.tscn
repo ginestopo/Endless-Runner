@@ -5,14 +5,14 @@
 [ext_resource path="res://scenes/gun/projectile/hitParticles/projectileHit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.93253, 5.79725 )
+extents = Vector2( 7.71458, 0.97707 )
 
 [node name="dogGunProjectile" type="KinematicBody2D"]
 script = ExtResource( 2 )
 hitParticles = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2.01, 2.01 )
+scale = Vector2( 2.01, 0.299227 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

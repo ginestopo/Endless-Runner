@@ -39,7 +39,7 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-_next_scene = "res://scenes/title/title.tscn"
+_next_scene = "res://scenes/story/story.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

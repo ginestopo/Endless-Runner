@@ -20,16 +20,25 @@ func _physics_process(delta: float) -> void:
 	
 	if not $RayCast2D.is_colliding():
 		if( velocity.y < 0 ):
-			$AnimationPlayer.play("jump")
+			#$AnimationPlayer.play("jump")
+			$AnimationPlayer2.set_speed_scale(1.0)
+			$AnimationPlayer2.play("jump")
 		else:
-			$AnimationPlayer.play("fall")
+			#$AnimationPlayer.play("fall")
+			$AnimationPlayer2.set_speed_scale(1.0)
+			$AnimationPlayer2.play("fall")
 	elif input == 0:
-		$AnimationPlayer.play("walk")
+		$AnimationPlayer2.play("run")
+		$AnimationPlayer2.set_speed_scale(1.0)
+		#$AnimationPlayer.play("walk")
 	else:
-		$AnimationPlayer.play("run")
+		$AnimationPlayer2.play("run")
+		$AnimationPlayer2.set_speed_scale(1.5)
+		#$AnimationPlayer.play("run")
 	
 	if not input == 0:
-		$Sprite.flip_h = input < 0
+		#$Sprite.flip_h = input < 0
+		$Sprite2.flip_h = input < 0
 
 func onHit():
 	#So here we decrease health points and play damage audio, implement later on

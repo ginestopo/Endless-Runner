@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1.jpeg-e8317ccd15e024846024abc74b7ed38a.stex"
+path="res://.import/dog_spritesheet_3.png-aaee3ba670c2442a558b1952296e6aa4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/pixel art/story_frames/1.jpeg"
-dest_files=[ "res://.import/1.jpeg-e8317ccd15e024846024abc74b7ed38a.stex" ]
+source_file="res://resources/pixel art/dog/dog_spritesheet_3.png"
+dest_files=[ "res://.import/dog_spritesheet_3.png-aaee3ba670c2442a558b1952296e6aa4.stex" ]
 
 [params]
 
