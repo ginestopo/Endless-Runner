@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.33333
-height = 3.33333
+height = 2.99867
 
 [sub_resource type="Animation" id=2]
 resource_name = "fall"
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "fall"
 length = 0.1
 tracks/0/type = "value"
@@ -122,8 +122,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "jump"
+[sub_resource type="Animation" id=9]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -138,8 +137,7 @@ tracks/0/keys = {
 "values": [ 13, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "run"
+[sub_resource type="Animation" id=10]
 length = 0.45
 loop = true
 tracks/0/type = "value"
@@ -155,14 +153,17 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[node name="Dog" type="KinematicBody2D" groups=["player"]]
+[node name="Dog" type="KinematicBody2D" groups=[
+"player",
+]]
 scale = Vector2( 3, 3 )
 collision_mask = 14
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -5.2236 )
 rotation = 1.5708
+scale = Vector2( 1.37333, 1.37333 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -193,7 +194,7 @@ stream = ExtResource( 4 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 0, -4.65 )
-scale = Vector2( 0.516667, 0.516667 )
+scale = Vector2( 0.623333, 0.623333 )
 texture = ExtResource( 5 )
 hframes = 10
 vframes = 2
@@ -202,6 +203,6 @@ region_filter_clip = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
-anims/fall = SubResource( 10 )
-anims/jump = SubResource( 8 )
-anims/run = SubResource( 9 )
+anims/fall = SubResource( 8 )
+anims/jump = SubResource( 9 )
+anims/run = SubResource( 10 )
