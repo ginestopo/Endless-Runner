@@ -8,6 +8,7 @@
 extents = Vector2( 7.71458, 0.97707 )
 
 [node name="dogGunProjectile" type="KinematicBody2D"]
+scale = Vector2( 0.96, 0.96 )
 script = ExtResource( 2 )
 hitParticles = ExtResource( 3 )
 

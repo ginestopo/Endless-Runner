@@ -15,10 +15,6 @@ func _process(_delta: float) -> void:
 
 
 
-func _on_restart_pressed() -> void:
-	get_tree().reload_current_scene()
-
-
 func _on_death_barrier_body_entered(body: Node) -> void:
 	if body.name == "Dog":
 		$failedStreamPlayer.play()
@@ -41,3 +37,7 @@ func _on_FreeEnemies_body_entered(body: Node) -> void:
 			body.queue_free()
 	pass # Replace with function body.
 
+
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()
