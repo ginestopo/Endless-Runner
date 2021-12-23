@@ -42,9 +42,7 @@ extents = Vector2( 7, 19.9556 )
 
 [node name="enemy_1" type="Node2D"]
 
-[node name="enemy_tarantula" type="KinematicBody2D" parent="." groups=[
-"enemy",
-]]
+[node name="enemy_tarantula" type="KinematicBody2D" parent="." groups=["enemy"]]
 position = Vector2( 0, -7.85833 )
 script = ExtResource( 2 )
 deathParticles = ExtResource( 5 )

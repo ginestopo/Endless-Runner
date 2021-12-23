@@ -33,8 +33,8 @@ func _on_platform_timer_timeout() -> void:
 
 
 func _on_FreeEnemies_body_entered(body: Node) -> void:
-	if body.name == "enemy_tarantula":
-			body.queue_free()
+	if body.is_in_group("enemy"):
+			body.destroy()
 	pass # Replace with function body.
 
 

@@ -38,9 +38,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1.16994, -24.0 ]
 }
 
-[node name="enemy_immolator" type="KinematicBody2D" parent="." groups=[
-"enemy",
-]]
+[node name="enemy_immolator" type="KinematicBody2D" parent="." groups=["enemy"]]
 script = ExtResource( 5 )
 deathParticles = ExtResource( 6 )
 
@@ -78,6 +76,7 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 pitch_scale = 1.19
 autoplay = true
+max_distance = 700.0
 
 [node name="Area2D" type="Area2D" parent="enemy_immolator"]
 
