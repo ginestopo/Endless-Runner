@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://resources/pixel art/UI/replay_button1.png" type="Texture" id=13]
 [ext_resource path="res://resources/pixel art/UI/replay_button2.png" type="Texture" id=14]
 [ext_resource path="res://scenes/enemy/flyer_Spawner.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resources/sound/soundtrack/endlessRunnerSong.wav" type="AudioStream" id=16]
 
 [sub_resource type="Gradient" id=1]
 
@@ -216,6 +217,11 @@ immolatorScene = ExtResource( 12 )
 
 [node name="flyer_Spawner" parent="." instance=ExtResource( 15 )]
 position = Vector2( 584, 0 )
+
+[node name="soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -15.0
+autoplay = true
 
 [connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="body_entered" from="FreeEnemies" to="." method="_on_FreeEnemies_body_entered"]

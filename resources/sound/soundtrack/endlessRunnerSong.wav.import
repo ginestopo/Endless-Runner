@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/endlessRunnerSong.wav-1554397940256357895a38c45accb5eb.sample"
+
+[deps]
+
+source_file="res://resources/sound/soundtrack/endlessRunnerSong.wav"
+dest_files=[ "res://.import/endlessRunnerSong.wav-1554397940256357895a38c45accb5eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

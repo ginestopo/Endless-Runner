@@ -12,6 +12,7 @@ export (int) var velocity
 func _process(_delta: float) -> void:
 # warning-ignore:integer_division
 	$UI/Score.text = str((OS.get_ticks_msec() - _start_time) / 1_000)
+	
 
 
 

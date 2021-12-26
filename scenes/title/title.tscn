@@ -54,6 +54,7 @@ shader = SubResource( 3 )
 shader_param/speed = 0.2
 
 [sub_resource type="DynamicFont" id=10]
+size = 17
 extra_spacing_char = 7
 extra_spacing_space = 10
 font_data = ExtResource( 6 )
@@ -177,11 +178,11 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 107.0
+margin_top = 106.0
 margin_right = 480.0
 margin_bottom = 127.0
 custom_fonts/font = SubResource( 10 )
-text = "Endless Runner"
+text = "Must save Jane"
 align = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
