@@ -11,11 +11,11 @@ dest_files=[ "res://.import/endlessRunnerSong.wav-1554397940256357895a38c45accb5
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=false
+edit/normalize=true
 edit/loop=true
 compress/mode=0

@@ -18,6 +18,7 @@ func _process(_delta: float) -> void:
 
 func _on_death_barrier_body_entered(body: Node) -> void:
 	if body.name == "Dog":
+		$soundtrack.stop()
 		$failedStreamPlayer.play()
 		body.queue_free()
 		$UI/Restart.show()

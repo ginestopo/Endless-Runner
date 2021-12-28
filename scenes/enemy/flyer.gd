@@ -42,4 +42,5 @@ func destroy():
 
 
 func _on_Timer_timeout():
+	destroy()
 	pass # Replace with function body.

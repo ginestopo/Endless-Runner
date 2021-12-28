@@ -25,7 +25,7 @@ func spawn():
 	
 		rng.randomize()
 		instance.position.y = self.position.y + rng.randf_range(0, 198)
-		print("created instance!")
+		#print("created instance!")
 
 func _on_Timer_timeout():
 	if randi()%2 >= 1:

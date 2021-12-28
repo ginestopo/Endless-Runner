@@ -26,7 +26,7 @@ func _process(delta):
 	velocity += accel * delta
 	velocity = velocity.clamped(speed)
 	rotation = clamp(velocity.x/steer_force,-PI/4,PI/4)
-	print(rotation+velocity.x)
+	#print(rotation+velocity.x)
 	var collide = move_and_collide(velocity*delta)
 	#For now just destroy, implement a selfDestruction function to call different particles
 	#And also to take life from the player
