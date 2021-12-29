@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/player/dog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/world.gd" type="Script" id=2]
@@ -65,6 +65,9 @@ extents = Vector2( 10, 300 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 760, 10 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 12, 800 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 10, 500 )
@@ -153,6 +156,10 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier"]
 shape = SubResource( 11 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathBarrier"]
+position = Vector2( -257, 0 )
+shape = SubResource( 13 )
+
 [node name="FreeEnemies" type="Area2D" parent="."]
 position = Vector2( -80, 280 )
 
@@ -223,8 +230,12 @@ stream = ExtResource( 16 )
 volume_db = -15.0
 autoplay = true
 
+[node name="scoreTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="body_entered" from="FreeEnemies" to="." method="_on_FreeEnemies_body_entered"]
 [connection signal="shot" from="Dog/Gun" to="Camera2D" method="_on_Gun_shot"]
 [connection signal="pressed" from="UI/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
+[connection signal="timeout" from="scoreTimer" to="." method="_on_scoreTimer_timeout"]

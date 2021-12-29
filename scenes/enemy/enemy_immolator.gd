@@ -54,6 +54,7 @@ func onHit():
 	$onHitAudioStream.set_pitch_scale(rng.randf_range(1.0,1.8)*0.5)
 	health-=1
 	if health <= 0:
+		get_node("/root/World").addScore(2)
 		$hoveringAudioStream.stop()
 		$CollisionShape2D.disabled = true
 		$Sprite.visible = false

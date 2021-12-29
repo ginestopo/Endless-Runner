@@ -9,13 +9,19 @@ var rng = RandomNumberGenerator.new()
 export (int) var velocity 
 
 
-func _process(_delta: float) -> void:
-# warning-ignore:integer_division
-	$UI/Score.text = str((OS.get_ticks_msec() - _start_time) / 1_000)
-	
 
-
-
+func addScore(enemyType: int):
+	if enemyType == 1:
+		#print("Tarantula Died")
+		$UI/Score.text = str(int($UI/Score.text)+1)
+	elif enemyType == 2:	
+		#print("Immolator Died")
+		$UI/Score.text = str(int($UI/Score.text)+5)
+	elif enemyType == 3:
+		#print("Flyer Died")
+		$UI/Score.text = str(int($UI/Score.text)+2)
+		
+		
 func _on_death_barrier_body_entered(body: Node) -> void:
 	if body.name == "Dog":
 		$soundtrack.stop()
@@ -43,3 +49,7 @@ func _on_FreeEnemies_body_entered(body: Node) -> void:
 
 func _on_Restart_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_scoreTimer_timeout():
+	$UI/Score.text = str((float($UI/Score.text)+1))
