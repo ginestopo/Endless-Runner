@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/splash_screen/splash_screen.gd" type="Script" id=1]
-[ext_resource path="res://resources/animated logo/pianobull_animated_logo_webm.webm" type="VideoStream" id=2]
+[ext_resource path="res://resources/animated logo/version2/1080x108_B.webm" type="VideoStream" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_out"
