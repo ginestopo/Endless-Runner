@@ -8,6 +8,8 @@ var _start_time := OS.get_ticks_msec()
 var rng = RandomNumberGenerator.new()
 export (int) var velocity 
 
+var final_score 
+
 
 
 func addScore(enemyType: int):
@@ -27,7 +29,12 @@ func _on_death_barrier_body_entered(body: Node) -> void:
 		$soundtrack.stop()
 		$failedStreamPlayer.play()
 		body.queue_free()
+		final_score = $UI/Score.text
 		$UI/Restart.show()
+		$UI/Score.visible = false
+		
+		
+		
 		set_process(false)
 
 
@@ -49,6 +56,7 @@ func _on_FreeEnemies_body_entered(body: Node) -> void:
 
 func _on_Restart_pressed():
 	get_tree().reload_current_scene()
+	$UI/Score.visible = true
 
 
 func _on_scoreTimer_timeout():
